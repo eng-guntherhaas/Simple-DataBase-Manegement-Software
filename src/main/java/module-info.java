@@ -3,6 +3,6 @@ module com.example.workshop {
     requires javafx.fxml;
 
 
-    opens com.example.application to javafx.fxml;
-    exports com.example.application;
+    opens com.example.workshop to javafx.fxml;
+    exports com.example.workshop;
 }
