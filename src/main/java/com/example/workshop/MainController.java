@@ -1,5 +1,6 @@
 package com.example.workshop;
 
+import com.example.workshop.model.services.DepartmentService;
 import com.example.workshop.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +33,7 @@ public class MainController implements Initializable {
 
     @FXML
     public void onMenuItemDepartmentAction(){
-        loadView("DepartmentListView.fxml");
+        loadView2("DepartmentListView.fxml");
     }
 
     @FXML
@@ -61,4 +62,27 @@ public class MainController implements Initializable {
             Alerts.showAlert("IO Excaption", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
+
+    private synchronized void loadView2(String absoluteName){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(absoluteName));
+            VBox newVBox = fxmlLoader.load();
+
+            Scene mainScene = Main.getMainScene();
+            VBox mainVBox = (VBox)((ScrollPane) mainScene.getRoot()).getContent();
+
+            Node mainMenu = mainVBox.getChildren().get(0);
+            mainVBox.getChildren().clear();
+            mainVBox.getChildren().add(mainMenu);
+            mainVBox.getChildren().addAll(newVBox.getChildren());
+
+            DepartmentController controller = fxmlLoader.getController();
+            controller.setDepartmentService(new DepartmentService());
+            controller.updateTableView();
+        }
+        catch (IOException e){
+            Alerts.showAlert("IO Excaption", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
 }
