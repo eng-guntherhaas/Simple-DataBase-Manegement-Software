@@ -1,17 +1,16 @@
 package com.example.workshop.model.services;
 
+import com.example.workshop.dao.DaoFactory;
+import com.example.workshop.dao.DepartmentDao;
 import com.example.workshop.model.entities.Department;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentService {
 
+    private DepartmentDao dao = DaoFactory.createDepartmentDao();
+
     public List<Department> findAll(){
-        List<Department> list = new ArrayList<>();
-        list.add(new Department(1, "Books"));
-        list.add(new Department(2, "Computers"));
-        list.add(new Department(3, "Electronics"));
-        return list;
+        return dao.findAll();
     }
 }

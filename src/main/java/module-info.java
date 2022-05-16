@@ -1,6 +1,7 @@
 module com.example.workshop {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.example.workshop to javafx.fxml;
