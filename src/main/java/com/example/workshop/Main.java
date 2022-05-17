@@ -11,6 +11,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static Scene mainScene;
+
     @Override
     public void start(Stage stage) {
         try {
@@ -22,15 +23,15 @@ public class Main extends Application {
             stage.setTitle("DataBase");
             stage.setScene(mainScene);
             stage.show();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.getMessage();
         }
     }
 
-    public static Scene getMainScene(){
+    public static Scene getMainScene() {
         return mainScene;
     }
+
     public static void main(String[] args) {
         launch();
     }

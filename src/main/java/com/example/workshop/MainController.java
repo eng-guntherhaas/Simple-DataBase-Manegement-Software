@@ -28,12 +28,12 @@ public class MainController implements Initializable {
     private MenuItem menuItemAbout;
 
     @FXML
-    public void onMenuItemSellerAction(){
+    public void onMenuItemSellerAction() {
         System.out.println("onMenuItemSellerAction");
     }
 
     @FXML
-    public void onMenuItemDepartmentAction(){
+    public void onMenuItemDepartmentAction() {
         loadView("DepartmentListView.fxml", (DepartmentController controller) -> {
             controller.setDepartmentService(new DepartmentService());
             controller.updateTableView();
@@ -41,21 +41,23 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    public void onMenuItemAboutAction(){
-       loadView("AboutView.fxml", x -> {});
+    public void onMenuItemAboutAction() {
+        loadView("AboutView.fxml", x -> {
+        });
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-    private synchronized <T> void loadView(String absoluteName, Consumer<T> initializingAction){
+    private synchronized <T> void loadView(String absoluteName, Consumer<T> initializingAction) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(absoluteName));
             VBox newVBox = fxmlLoader.load();
 
             Scene mainScene = Main.getMainScene();
-            VBox mainVBox = (VBox)((ScrollPane) mainScene.getRoot()).getContent();
+            VBox mainVBox = (VBox) ((ScrollPane) mainScene.getRoot()).getContent();
 
             Node mainMenu = mainVBox.getChildren().get(0);
             mainVBox.getChildren().clear();
@@ -64,8 +66,7 @@ public class MainController implements Initializable {
 
             T controller = fxmlLoader.getController();
             initializingAction.accept(controller);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             Alerts.showAlert("IO Excaption", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
