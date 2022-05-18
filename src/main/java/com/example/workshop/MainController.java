@@ -1,7 +1,7 @@
 package com.example.workshop;
 
 import com.example.workshop.model.services.DepartmentService;
-import com.example.workshop.util.Alerts;
+import com.example.workshop.gui.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

@@ -26,7 +26,7 @@
                 <Label text="ID" />
                 <Label text="Name" GridPane.rowIndex="1" />
                 <TextField fx:id="txtId" editable="false" promptText="Id" GridPane.columnIndex="1" />
-                <TextField fx:id="txtName" promptText="Type a name..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label fx:id="labelErrorName" prefHeight="17.0" prefWidth="104.0" textFill="#f50000" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>

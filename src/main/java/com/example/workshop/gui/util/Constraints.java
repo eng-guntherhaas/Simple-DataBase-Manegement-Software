@@ -1,4 +1,4 @@
-package com.example.workshop.util;
+package com.example.workshop.gui.util;
 
 import javafx.scene.control.TextField;
 

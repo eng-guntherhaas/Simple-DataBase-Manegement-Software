@@ -1,11 +1,12 @@
 package com.example.workshop;
 
 import com.example.workshop.db.DbException;
+import com.example.workshop.gui.listeners.DataChangeListener;
+import com.example.workshop.gui.util.Alerts;
+import com.example.workshop.gui.util.Constraints;
+import com.example.workshop.gui.util.Utils;
 import com.example.workshop.model.entities.Department;
 import com.example.workshop.model.services.DepartmentService;
-import com.example.workshop.util.Alerts;
-import com.example.workshop.util.Constraints;
-import com.example.workshop.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DepartmentFormController implements Initializable {
@@ -22,6 +25,8 @@ public class DepartmentFormController implements Initializable {
     private Department entity;
 
     private DepartmentService service;
+
+    private List<DataChangeListener> dataChangeListeners = new ArrayList<>();
 
     @FXML
     private TextField txtId;
@@ -38,6 +43,18 @@ public class DepartmentFormController implements Initializable {
     @FXML
     private Button btCancel;
 
+    public void setDepartment(Department entity){
+        this.entity = entity;
+    }
+
+    public void setDepartmentService(DepartmentService service){
+        this.service = service;
+    }
+
+    public void subscribeDataChangeListener(DataChangeListener listener){
+        dataChangeListeners.add(listener);
+    }
+
     @FXML
     public void onBtSaveAction(ActionEvent event) {
         if(entity == null){
@@ -49,6 +66,7 @@ public class DepartmentFormController implements Initializable {
         try {
             entity = getFormData();
             service.saveOrUpdate(entity);
+            notifyDataChangeListenerd();
             Utils.currentStage(event).close();
         }
         catch (DbException e){
@@ -56,17 +74,15 @@ public class DepartmentFormController implements Initializable {
         }
     }
 
+    private void notifyDataChangeListenerd() {
+        for(DataChangeListener listener : dataChangeListeners){
+            listener.onDataChanged();
+        }
+    }
+
     @FXML
     public void onBtCancelAction(ActionEvent event) {
         Utils.currentStage(event).close();
-    }
-
-    public void setDepartment(Department entity){
-        this.entity = entity;
-    }
-
-    public void setDepartmentService(DepartmentService service){
-        this.service = service;
     }
 
     @Override
