@@ -29,6 +29,8 @@ public class DepartmentListController implements Initializable {
 
     private DepartmentService service;
 
+    private ObservableList<Department> obsList;
+
     @FXML
     private TableView<Department> tableViewDepartment;
 
@@ -41,7 +43,6 @@ public class DepartmentListController implements Initializable {
     @FXML
     private Button btNew;
 
-    private ObservableList<Department> obsList;
 
     @FXML
     public void onBtNewAction(ActionEvent event) {
@@ -83,6 +84,7 @@ public class DepartmentListController implements Initializable {
 
             DepartmentFormController controller = fxmlLoader.getController();
             controller.setDepartment(obj);
+            controller.setDepartmentService(new DepartmentService());
             controller.updateFormData();
 
             Stage dialogeStage = new Stage();
