@@ -3,6 +3,7 @@ package com.example.workshop;
 import com.example.workshop.db.DbIntegrityException;
 import com.example.workshop.gui.listeners.DataChangeListener;
 import com.example.workshop.gui.util.Alerts;
+import com.example.workshop.gui.util.Utils;
 import com.example.workshop.model.entities.Seller;
 import com.example.workshop.model.services.SellerService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -35,10 +37,20 @@ public class SellerListController implements Initializable, DataChangeListener {
     private TableColumn<Seller, String> tableColumnName;
 
     @FXML
+    private TableColumn<Seller, String> tableColumnEmail;
+
+    @FXML
+    private TableColumn<Seller, Date> tableColumnBirthDate;
+
+    @FXML
+    private TableColumn<Seller, Double> tableColumnBaseSalary;
+
+    @FXML
     private TableColumn<Seller, Seller> tableColumnEdit;
 
     @FXML
     private TableColumn<Seller, Seller> tableColumnRemove;
+
 
     @FXML
     private Button btNew;
@@ -63,6 +75,11 @@ public class SellerListController implements Initializable, DataChangeListener {
     private void initializeNodes() {
         tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tableColumnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tableColumnBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        Utils.formatTableColumnDate(tableColumnBirthDate, "dd/MM/yyyy");
+        tableColumnBaseSalary.setCellValueFactory(new PropertyValueFactory<>("baseSalary"));
+        Utils.formatTableColumnDouble(tableColumnBaseSalary, 2);
 
         Stage stage = (Stage) Main.getMainScene().getWindow();
         tableViewSeller.prefHeightProperty().bind(stage.heightProperty());
@@ -76,7 +93,7 @@ public class SellerListController implements Initializable, DataChangeListener {
         obsList = FXCollections.observableArrayList(list);
         tableViewSeller.setItems(obsList);
 //        initEditButtons();
-        initRemoveButtons();
+//        initRemoveButtons();
     }
 
 //    private void createDialogForm(Seller obj, String absoluteName, Stage parentStage) {

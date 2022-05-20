@@ -71,7 +71,7 @@ public class MainController implements Initializable {
             T controller = fxmlLoader.getController();
             initializingAction.accept(controller);
         } catch (IOException e) {
-            Alerts.showAlert("IO Excaption", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
+            Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
