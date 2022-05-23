@@ -9,12 +9,18 @@ import com.example.workshop.model.services.SellerService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -56,12 +62,12 @@ public class SellerListController implements Initializable, DataChangeListener {
     private Button btNew;
 
 
-//    @FXML
-//    public void onBtNewAction(ActionEvent event) {
-//        Stage parentStage = Utils.currentStage(event);
-//        Seller obj = new Seller();
-//        createDialogForm(obj, "SellerFormView.fxml", parentStage);
-//    }
+    @FXML
+    public void onBtNewAction(ActionEvent event) {
+        Stage parentStage = Utils.currentStage(event);
+        Seller obj = new Seller();
+        createDialogForm(obj, "SellerFormView.fxml", parentStage);
+    }
 
     public void setSellerService(SellerService service) {
         this.service = service;
@@ -92,59 +98,59 @@ public class SellerListController implements Initializable, DataChangeListener {
         List<Seller> list = service.findAll();
         obsList = FXCollections.observableArrayList(list);
         tableViewSeller.setItems(obsList);
-//        initEditButtons();
-//        initRemoveButtons();
+        initEditButtons();
+        initRemoveButtons();
     }
 
-//    private void createDialogForm(Seller obj, String absoluteName, Stage parentStage) {
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(absoluteName));
-//            Pane pane = fxmlLoader.load();
-//
-//            SellerFormController controller = fxmlLoader.getController();
-//            controller.setSeller(obj);
-//            controller.setSellerService(new SellerService());
-//            controller.subscribeDataChangeListener(this);
-//            controller.updateFormData();
-//
-//            Stage dialogeStage = new Stage();
-//            dialogeStage.setTitle("Enter seller data");
-//            dialogeStage.setScene(new Scene(pane));
-//            dialogeStage.setResizable(false);
-//            dialogeStage.initOwner(parentStage);
-//            dialogeStage.initModality(Modality.WINDOW_MODAL);
-//            dialogeStage.showAndWait();
-//        } catch (IOException e) {
-//            Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
-//        }
-//    }
+    private void createDialogForm(Seller obj, String absoluteName, Stage parentStage) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(absoluteName));
+            Pane pane = fxmlLoader.load();
+
+            SellerFormController controller = fxmlLoader.getController();
+            controller.setSeller(obj);
+            controller.setSellerService(new SellerService());
+            controller.subscribeDataChangeListener(this);
+            controller.updateFormData();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Enter seller data");
+            dialogStage.setScene(new Scene(pane));
+            dialogStage.setResizable(false);
+            dialogStage.initOwner(parentStage);
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
 
     @Override
     public void onDataChanged() {
         updateTableView();
     }
 
-//    private void initEditButtons(){
-//        tableColumnEdit.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-//        tableColumnEdit.setCellFactory(param -> new TableCell<Seller, Seller>() {
-//            private final Button button = new Button("Edit");
-//
-//            @Override
-//            protected void updateItem(Seller obj, boolean empty) {
-//                super.updateItem(obj, empty);
-//
-//                if (obj == null) {
-//                    setGraphic(null);
-//                    return;
-//                }
-//
-//                setGraphic(button);
-//                button.setOnAction(
-//                        event -> createDialogForm(obj, "SellerFormView.fxml", Utils.currentStage(event))
-//                );
-//            }
-//        });
-//    }
+    private void initEditButtons(){
+        tableColumnEdit.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tableColumnEdit.setCellFactory(param -> new TableCell<Seller, Seller>() {
+            private final Button button = new Button("Edit");
+
+            @Override
+            protected void updateItem(Seller obj, boolean empty) {
+                super.updateItem(obj, empty);
+
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+
+                setGraphic(button);
+                button.setOnAction(
+                        event -> createDialogForm(obj, "SellerFormView.fxml", Utils.currentStage(event))
+                );
+            }
+        });
+    }
 
     private void initRemoveButtons(){
         tableColumnRemove.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));

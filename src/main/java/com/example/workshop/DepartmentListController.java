@@ -97,13 +97,13 @@ public class DepartmentListController implements Initializable, DataChangeListen
             controller.subscribeDataChangeListener(this);
             controller.updateFormData();
 
-            Stage dialogeStage = new Stage();
-            dialogeStage.setTitle("Enter department data");
-            dialogeStage.setScene(new Scene(pane));
-            dialogeStage.setResizable(false);
-            dialogeStage.initOwner(parentStage);
-            dialogeStage.initModality(Modality.WINDOW_MODAL);
-            dialogeStage.showAndWait();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Enter department data");
+            dialogStage.setScene(new Scene(pane));
+            dialogStage.setResizable(false);
+            dialogStage.initOwner(parentStage);
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.showAndWait();
         } catch (IOException e) {
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
