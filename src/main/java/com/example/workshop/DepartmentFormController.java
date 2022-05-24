@@ -131,4 +131,6 @@ public class DepartmentFormController implements Initializable {
             labelErrorName.setText(errors.get("name"));
         }
     }
+
+
 }
