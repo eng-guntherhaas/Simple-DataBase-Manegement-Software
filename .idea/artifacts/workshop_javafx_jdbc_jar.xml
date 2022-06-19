@@ -1,0 +1,35 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="workshop-javafx-jdbc:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/workshop_javafx_jdbc_jar</output-path>
+    <root id="archive" name="workshop-javafx-jdbc.jar">
+      <element id="module-output" name="workshop-javafx-jdbc" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18-ea+6/javafx-base-18-ea+6-mac-aarch64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/18-ea+6/javafx-fxml-18-ea+6-mac-aarch64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/18-ea+6/javafx-graphics-18-ea+6-mac-aarch64.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18-ea+6/javafx-base-18-ea+6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18-ea+6/javafx-controls-18-ea+6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/18-ea+6/javafx-fxml-18-ea+6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/18-ea+6/javafx-graphics-18-ea+6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/javafx-sdk/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/javafx-sdk/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/javafx-sdk/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/javafx-sdk/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/javafx-sdk/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/javafx-sdk/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/javafx-sdk/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/javafx-sdk/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../java-libs/jdbc-connectors/mysql-connector-java-8.0.29.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18-ea+6/javafx-controls-18-ea+6-mac-aarch64.jar" path-in-jar="/" />
+      <element id="library" level="project" name="mysql-connector-java-8.0.29" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:18-ea+6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:mac-aarch64:18-ea+6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:18-ea+6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:mac-aarch64:18-ea+6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:18-ea+6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:mac-aarch64:18-ea+6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:18-ea+6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:mac-aarch64:18-ea+6" />
+      <element id="library" level="project" name="lib" />
+    </root>
+  </artifact>
+</component>
